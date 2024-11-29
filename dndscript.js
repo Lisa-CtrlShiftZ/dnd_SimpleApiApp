@@ -8,20 +8,29 @@ const output = document.getElementById('output');
     .then(response => response.json())
     .then(species => species.results.forEach(speciesItem => {
         
-        const dndSpeciesDiv = document.createElement('div');
-        dndSpeciesDiv.classList.add('dnd-item'); //classList geeft een CSS class
+        // const dndSpeciesDiv = document.createElement('div');
+        // dndSpeciesDiv.classList.add('dnd-item'); //classList geeft een CSS class
         
-        const pageLink = document.createElement('a');
-        pageLink.setAttribute('href', `details.html?type=races&id=${speciesItem.index}`);
+        // const pageLink = document.createElement('a');
+        // pageLink.setAttribute('href', `details.html?type=races&id=${speciesItem.index}`);
 
-        const nameParagraph = document.createElement('p');
-        nameParagraph.textContent = speciesItem.name;
+        // const nameParagraph = document.createElement('p');
+        // nameParagraph.textContent = speciesItem.name;
 
-        // Append the paragraph to the div
+        // // Append the paragraph to the div
 
-        dndSpeciesDiv.append(nameParagraph);
-        pageLink.appendChild(dndSpeciesDiv);
-        output.appendChild(pageLink);
+        // dndSpeciesDiv.append(nameParagraph);
+        // pageLink.appendChild(dndSpeciesDiv);
+        // output.appendChild(pageLink);
+        output.innerHTML += `
+        <div class="dnd-item">
+            <div class="image-mask">
+            <a href="details.html?type=races&id=${speciesItem.index}"><img src="images/${speciesItem.name}.jpg"></a> 
+            </div>
+          <p>${speciesItem.name}</p> 
+        </div>
+        `
+
     }))
     .catch((error) => console.error('Something went wrong', error));
   }

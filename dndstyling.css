@@ -1,0 +1,20 @@
+.output {
+    display: flex;
+}
+
+.dnd-item {
+    background-color: bisque;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 2%;
+    margin: 1%;
+    width: 30%;
+}
+
+.dnd-item a {
+    width: 30%;
+}
+
+.dnd-item p {
+    font-family: "Texturina", serif;
+}

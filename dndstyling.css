@@ -26,7 +26,7 @@ p {
     flex-wrap: wrap;
 }
 
-
+/* SPECIES ITEMS */
 .dnd-item {
     min-width: 300px;
     background-color: bisque;
@@ -34,29 +34,6 @@ p {
     border-radius: 10px;
     margin: 1%;
     width: 20%;
-}
-
-.spell-item {
-    min-width: 100px;
-    background-color: bisque;
-    box-sizing: border-box;
-    border-radius: 10px;
-    margin: 1%;
-    width: 20%;
-}
-
-.spell-item p {
-    font-family: "Texturina", serif;
-    display: flex;
-    justify-content: center;
-    color: #04151F;
-}
-
-a {
-    width: 30%;
-    text-decoration: none;
-    color: #04151F;
-
 }
 
 .dnd-item p {
@@ -76,3 +53,32 @@ a {
   width: 100%;
   height: auto;
 }
+
+/* SPELL ITEMS */
+.spell-item {
+    display: flex;
+    flex-direction: column;
+    min-width: 100px;
+    background-color: bisque;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 1%;
+    width: 20%;
+}
+
+.spell-item p {
+    font-family: "Texturina", serif;
+    display: flex;
+    justify-content: center;
+    color: #04151F;
+}
+
+.spell-item img {
+    max-width: 100px;
+    padding: 10px;
+    margin: auto;
+}
+
+ 
+
+ 

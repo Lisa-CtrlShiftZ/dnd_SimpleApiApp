@@ -10,21 +10,6 @@ const spellsOutput = document.getElementById('spellsOutput');
     fetch(dndRacesUrl)
     .then(response => response.json())
     .then(species => species.results.forEach(speciesItem => {
-        
-        // const dndSpeciesDiv = document.createElement('div');
-        // dndSpeciesDiv.classList.add('dnd-item'); //classList geeft een CSS class
-        
-        // const pageLink = document.createElement('a');
-        // pageLink.setAttribute('href', `details.html?type=races&id=${speciesItem.index}`);
-
-        // const nameParagraph = document.createElement('p');
-        // nameParagraph.textContent = speciesItem.name;
-
-        // // Append the paragraph to the div
-
-        // dndSpeciesDiv.append(nameParagraph);
-        // pageLink.appendChild(dndSpeciesDiv);
-        // output.appendChild(pageLink);
         output.innerHTML += `
         <div class="dnd-item">
             <div class="image-mask">
@@ -40,22 +25,34 @@ const spellsOutput = document.getElementById('spellsOutput');
 
   fetchData(dndRacesUrl); 
 
-  function fetchSpells(dndSpellsUrl){
-    output.innerHTML = '';  // Clear previous content
+  function fetchSpells(dndSpellsUrl) {
     fetch(dndSpellsUrl)
     .then(response => response.json())
     .then(spells => spells.results
       .sort((a, b) => a.level - b.level)
       .forEach(spellItem => {
 
-         spellsOutput.innerHTML += `
-        <div class="spell-item">
-          <p>${spellItem.name}</p> 
-          <p>Level: ${spellItem.level}</p>
-        </div>
-        `
-    }))
-    .catch((error) => console.error('Something went wrong', error));
-  }
+        const baseUrl = 'https://www.dnd5eapi.co';
 
-  fetchSpells(dndSpellsUrl); 
+        fetch(`${baseUrl}${spellItem.url}`)
+        .then(response => response.json())
+        .then(spellDetails => {
+            const damageType = spellDetails.damage.damage_type.name;
+
+            spellsOutput.innerHTML += `
+            <div class="spell-item">
+                <img src="icons/damage/${damageType}.svg" alt="${damageType}">
+                <b><p>${spellItem.name}</p></b> 
+                <p>Damage type: ${damageType}</p>
+                <p>Level: ${spellItem.level}</p>
+            </div>
+            `;
+        });
+
+      })
+    )
+    .catch((error) => console.error('Something went wrong', error));
+}
+
+fetchSpells(dndSpellsUrl);
+ 

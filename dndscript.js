@@ -25,11 +25,13 @@ const spellsOutput = document.getElementById('spellsOutput');
 
   fetchData(dndRacesUrl); 
 
+  // edit slice to show more spells!
   function fetchSpells(dndSpellsUrl) {
     fetch(dndSpellsUrl)
     .then(response => response.json())
     .then(spells => spells.results
       .sort((a, b) => a.level - b.level)
+      .slice(0, 20) 
       .forEach(spellItem => {
 
         const baseUrl = 'https://www.dnd5eapi.co';
@@ -37,13 +39,17 @@ const spellsOutput = document.getElementById('spellsOutput');
         fetch(`${baseUrl}${spellItem.url}`)
         .then(response => response.json())
         .then(spellDetails => {
-            const damageType = spellDetails.damage.damage_type.name;
+          let damageType = "Utility"; // Default value for spells without damage
+
+          if (spellDetails.damage && spellDetails.damage.damage_type) {
+              damageType = spellDetails.damage.damage_type.name;
+          }
 
             spellsOutput.innerHTML += `
             <div class="spell-item">
-                <img src="icons/damage/${damageType}.svg" alt="${damageType}">
+                <a href="spellDetails.html?type=spells&id=${spellDetails.index}"><img src="icons/damage/${damageType}.svg" alt="${damageType}"></a>
                 <b><p>${spellItem.name}</p></b> 
-                <p>Damage type: ${damageType}</p>
+                <p>Type: ${damageType}</p>
                 <p>Level: ${spellItem.level}</p>
             </div>
             `;

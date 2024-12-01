@@ -79,6 +79,10 @@ p {
     margin: auto;
 }
 
+.spell-item a {
+    display: flex;
+    justify-content: center;
+}
  
 
  

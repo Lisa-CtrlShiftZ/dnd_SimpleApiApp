@@ -21,6 +21,11 @@ p {
  
 }
 
+#spellsOutput {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 
 .dnd-item {
     min-width: 300px;
@@ -29,6 +34,22 @@ p {
     border-radius: 10px;
     margin: 1%;
     width: 20%;
+}
+
+.spell-item {
+    min-width: 100px;
+    background-color: bisque;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 1%;
+    width: 20%;
+}
+
+.spell-item p {
+    font-family: "Texturina", serif;
+    display: flex;
+    justify-content: center;
+    color: #04151F;
 }
 
 a {

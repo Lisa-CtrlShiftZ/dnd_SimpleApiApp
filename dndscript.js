@@ -1,5 +1,8 @@
 const dndRacesUrl = "https://www.dnd5eapi.co/api/races"; 
+const dndSpellsUrl ="https://www.dnd5eapi.co/api/spells";
+
 const output = document.getElementById('output');
+const spellsOutput = document.getElementById('spellsOutput');
 
 
   function fetchData(dndRacesUrl){
@@ -36,3 +39,23 @@ const output = document.getElementById('output');
   }
 
   fetchData(dndRacesUrl); 
+
+  function fetchSpells(dndSpellsUrl){
+    output.innerHTML = '';  // Clear previous content
+    fetch(dndSpellsUrl)
+    .then(response => response.json())
+    .then(spells => spells.results
+      .sort((a, b) => a.level - b.level)
+      .forEach(spellItem => {
+
+         spellsOutput.innerHTML += `
+        <div class="spell-item">
+          <p>${spellItem.name}</p> 
+          <p>Level: ${spellItem.level}</p>
+        </div>
+        `
+    }))
+    .catch((error) => console.error('Something went wrong', error));
+  }
+
+  fetchSpells(dndSpellsUrl); 

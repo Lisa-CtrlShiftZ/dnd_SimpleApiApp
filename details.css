@@ -27,13 +27,17 @@ nav a {
 
 h3 {
     font-family: "Texturina", serif;
-    font-size: 38px;
+    font-size: 32px;
 }
 
 p {
     font-family: "Lato", sans-serif;
 }
 
+
+.iconDiv {
+    max-width: 100px;
+}
  
 
  

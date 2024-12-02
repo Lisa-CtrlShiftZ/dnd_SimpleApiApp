@@ -25,13 +25,14 @@ const spellsOutput = document.getElementById('spellsOutput');
 
   fetchData(dndRacesUrl); 
 
+  let allSpells = [];
   // edit slice to show more spells!
   function fetchSpells(dndSpellsUrl) {
     fetch(dndSpellsUrl)
     .then(response => response.json())
     .then(spells => spells.results
       .sort((a, b) => a.level - b.level)
-      .slice(0, 20) 
+      .slice(0, 60) 
       .forEach(spellItem => {
 
         const baseUrl = 'https://www.dnd5eapi.co';
@@ -62,3 +63,11 @@ const spellsOutput = document.getElementById('spellsOutput');
 
 fetchSpells(dndSpellsUrl);
  
+
+function filterSpells(spells, damageType = null, level = null) {
+  return spells.filter(spell => {
+      const matchesDamage = damageType ? spell.damageType === damageType : true;
+      const matchesLevel = level !== null ? spell.level === level : true;
+      return matchesDamage && matchesLevel;
+  });
+}

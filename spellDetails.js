@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       
       iconDiv.innerHTML = `
         <div class="iconDiv"> 
-           <img src="icons/damage/${damageType}.svg">
+           <img src="public/icons/damage/${damageType}.svg">
         </div>
         `
   

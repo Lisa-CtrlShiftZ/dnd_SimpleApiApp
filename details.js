@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       bannerImage.innerHTML = `
         <div class="banner-image"> 
-           <img src="images/${data.name}.jpg">
+           <img src="public/images/${data.name}.jpg">
         </div>
         `
   

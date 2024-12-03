@@ -13,7 +13,7 @@ const spellsOutput = document.getElementById('spellsOutput');
         output.innerHTML += `
         <div class="dnd-item">
             <div class="image-mask">
-            <a href="details.html?type=races&id=${speciesItem.index}"><img src="public/images/${speciesItem.name}.jpg"></a> 
+            <a href="details.html?type=races&id=${speciesItem.index}"><img src="/images/${speciesItem.name}.jpg"></a> 
             </div>
           <p>${speciesItem.name}</p> 
         </div>
@@ -47,7 +47,7 @@ const spellsOutput = document.getElementById('spellsOutput');
 
             spellsOutput.innerHTML += `
             <div class="spell-item">
-                <a href="spellDetails.html?type=spells&id=${spellDetails.index}"><img src="public/icons/damage/${damageType}.svg" alt="${damageType}"></a>
+                <a href="spellDetails.html?type=spells&id=${spellDetails.index}"><img src="/icons/damage/${damageType}.svg" alt="${damageType}"></a>
                 <b><p>${spellItem.name}</p></b> 
                 <p>Type: ${damageType}</p>
                 <p>Level: ${spellItem.level}</p>

@@ -3,6 +3,8 @@ const dndSpellsUrl ="https://www.dnd5eapi.co/api/spells";
 
 const output = document.getElementById('output');
 const spellsOutput = document.getElementById('spellsOutput');
+const sortType = document.getElementById('sortType');
+const sortLevel = document.getElementById('sortLevel');
 
 
   function fetchData(dndRacesUrl){
@@ -26,7 +28,7 @@ const spellsOutput = document.getElementById('spellsOutput');
   fetchData(dndRacesUrl);  
 
   let allSpells = [];
-  // edit slice to show more spells!
+
   function fetchSpells(dndSpellsUrl) {
     fetch(dndSpellsUrl)
     .then(response => response.json())
@@ -42,7 +44,7 @@ const spellsOutput = document.getElementById('spellsOutput');
           let damageType = "Utility"; // Default value for spells without damage
 
           if (spellDetails.damage && spellDetails.damage.damage_type) {
-              damageType = spellDetails.damage.damage_type.name;
+              damageType = spellDetails.damage.damage_type.index;
           }
 
             spellsOutput.innerHTML += `
@@ -62,11 +64,43 @@ const spellsOutput = document.getElementById('spellsOutput');
 
 fetchSpells(dndSpellsUrl);
  
+document.getElementById('sortType').addEventListener('change', filterSpells);
 
-function filterSpells(spells, damageType = null, level = null) {
-  return spells.filter(spell => {
-      const matchesDamage = damageType ? spell.damageType === damageType : true;
-      const matchesLevel = level !== null ? spell.level === level : true;
-      return matchesDamage && matchesLevel;
-  });
+function filterSpells(){
+    console.log('Someone just changed the Type value!')
+
+    const filterValue = document.getElementById('sortType').value;
+    const spellItems = document.querySelectorAll('.spell-item');
+    console.log(`They searched for ${filterValue}`); 
+
+    spellItems.forEach(item => {
+          //Pakt de 3e <p>, dit werkt, maar moet anders kunnen?
+        const spellType = item.querySelector('p:nth-child(3)').textContent.split(': ')[1];
+        if (filterValue === 'all' || spellType === filterValue) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
 }
+
+function searchByString(){
+
+const spellItems = document.querySelectorAll('.spell-item');
+let searchValue = document.getElementById('textInput').value.toLowerCase();
+
+spellItems.forEach(item => {
+
+    const spellNameElement = item.querySelector('b > p');
+    const spellName = spellNameElement ? spellNameElement.textContent.toLowerCase() : "";
+
+    if(spellName.toLowerCase().includes(searchValue)){
+        item.style.display = 'block';
+    } else {
+        item.style.display = 'none';
+ }
+    
+})
+}
+
+ 

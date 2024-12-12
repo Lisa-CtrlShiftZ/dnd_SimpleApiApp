@@ -28,9 +28,12 @@
     </div>
     <h3>Spells</h3>
     <div class="filer-box"> 
+
+        <input type="text" id="textInput" onkeyup="searchByString()" placeholder="Search for spells by name">
+
             <label for=sortType>Sort Type</label>
             <select name="sortType" id="sortType">
-                <option value="">Type</option>
+                <option value="all">All</option>
                 <option value="acid">Acid</option>
                 <option value="bludgeoning">Bludgeoning</option>
                 <option value="cold">Cold</option>
@@ -46,19 +49,9 @@
                 <option value="thunder">Thunder</option>
                 <option value="utility">Utiliy</option>
             </select>
-            <div class="select-level">
-            <label for=sortType>Sort Level</label>
-            <select name="sortLevel" id="sortLevel">
-                <option value="">Level</option>
-                <option value="filterLevelAll">All</option>
-                <option value="filterLevel0">0</option>
-                <option value="filterLevel1">1</option>
-                <option value="filterLevel2">2</option>
-            </select>
-            <div>
     </div>
     <div id="spellsOutput">
-
+         
     </div>
     <script src="dndscript.js"></script>
 </body>

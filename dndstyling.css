@@ -55,7 +55,7 @@ p {
 }
 
 /* FILTER SPELLS */
-select {
+select, input {
     border: none;
     border-radius: 5px;
     padding: 5px;
@@ -95,5 +95,18 @@ select {
     justify-content: center;
 }
  
+@media only screen and (max-width: 720px) {
+
+    .dnd-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .spell-item{
+        min-width: 45%;
+        justify-content: center;
+    }
+  }
 
  
